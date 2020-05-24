@@ -4,12 +4,14 @@ import api.entity.Account;
 import api.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import services.interfaces.AccountService;
 import web.security.WebSecurityConfig;
 
 import javax.validation.Valid;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 @Controller
 public class MainController {
@@ -37,7 +39,29 @@ public class MainController {
     public String registration(@Valid Account account) {
         account.setPassword(webSecurityConfig.getShaPasswordEncoder().encodePassword(account.getPassword(), null));
         account.setRole("ROLE_" + Role.USER.name());
-        accountService.create(account);
+        try {
+            accountService.create(account);
+        } catch (Exception ex) {
+            return "redirect:/registrationfail";
+        }
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "/registrationfail", method = RequestMethod.GET)
+    public String signUpFail(Model model) {
+        model.addAttribute("msg", "User already exists!");
+        return "registration";
+    }
+
+    @RequestMapping(value = "/registrationfail", method = RequestMethod.POST)
+    public String registrationFail(@Valid Account account) {
+        account.setPassword(webSecurityConfig.getShaPasswordEncoder().encodePassword(account.getPassword(), null));
+        account.setRole("ROLE_" + Role.USER.name());
+        try {
+            accountService.create(account);
+        } catch (Exception ex) {
+            return "redirect:/registrationfail";
+        }
         return "redirect:";
     }
 

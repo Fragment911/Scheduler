@@ -76,7 +76,7 @@ public class ScheduleController {
     @RequestMapping(value = {"/update"}, method = RequestMethod.POST)
     public String update(@Valid Schedule schedule) {
         scheduleService.update(schedule.getId(), schedule.getName());
-        return "redirect:";
+        return "redirect:" + schedule.getId();
     }
 
     @RequestMapping(value = {"/remove/{id}"}, method = RequestMethod.GET)

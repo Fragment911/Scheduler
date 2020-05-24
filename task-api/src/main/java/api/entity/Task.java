@@ -1,12 +1,9 @@
 package api.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
 @Entity
-@OnDelete(action = OnDeleteAction.CASCADE)
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +11,7 @@ public class Task {
     private String name;
     private String text;
     private String status;
-    @ManyToOne(targetEntity = Schedule.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Schedule.class)
     private Schedule schedule;
 
     public Task() {

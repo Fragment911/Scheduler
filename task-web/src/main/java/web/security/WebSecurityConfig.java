@@ -21,7 +21,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
-//private UserDetailsService userDetailsService = new CustomAccountDetailsService();
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -33,12 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-//                .antMatchers("/option/**").access("hasRole('ADMIN') or hasRole('MODER')")
-//                .antMatchers("/car/**").access("hasRole('ADMIN') or hasRole('MODER') or hasRole('DRIVER')")
-//                .antMatchers("/option/**").authenticated()
-//                .antMatchers("/car/**").authenticated()
-//                .antMatchers("/account/**").access("hasRole('ADMIN')")
-//                .antMatchers("/order/**").authenticated()
                 .anyRequest().permitAll()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().exceptionHandling().accessDeniedPage("/403");

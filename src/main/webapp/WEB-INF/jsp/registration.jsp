@@ -1,5 +1,5 @@
 <%@ include file="/webresources/header.jspf"%>
-       <h1>Sign up</h1>
+    <h1>Sign up</h1>
     <form role="form" method="POST">
         <div class="form-group">
             <label for="login">Login</label>
@@ -9,6 +9,7 @@
             <label for="password">Password</label>
             <input class="form-control" type="text" name="password" path="password" autocomplete="off" />
         </div>
-        <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
+        <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Registrate</button>
     </form>
+    <h3 style="color: red">${msg}</h3>
 <%@ include file="/webresources/footer.jspf"%>

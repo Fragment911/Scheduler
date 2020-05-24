@@ -1,19 +1,15 @@
 package api.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@OnDelete(action = OnDeleteAction.CASCADE)
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @ManyToOne(targetEntity = Account.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Account.class)
     private Account account;
     @OneToMany(targetEntity = Task.class, mappedBy = "schedule", orphanRemoval = true)
     private List<Task> taskList;
