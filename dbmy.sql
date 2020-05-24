@@ -30,7 +30,7 @@ ALTER TABLE `schedule` ADD CONSTRAINT `schedule_fk0` FOREIGN KEY (`account_id`) 
 
 ALTER TABLE `task` ADD CONSTRAINT `task_fk0` FOREIGN KEY (`schedule_id`) REFERENCES `schedule`(`id`) ON DELETE CASCADE;
 
-INSERT INTO `account` (`login`, `password`, `role`) VALUES ("max", "0706025b2bbcec1ed8d64822f4eccd96314938d0", "ROLE_USER");
+INSERT INTO `account` (`login`, `password`, `role`) VALUES ("user", "0706025b2bbcec1ed8d64822f4eccd96314938d0", "ROLE_USER");
 INSERT INTO `account` (`login`, `password`, `role`) VALUES ("moder", "b36c04f4f2496b9525646ec01ff51e2007e79a2c", "ROLE_MODER");
 INSERT INTO `account` (`login`, `password`, `role`) VALUES ("admin", "d033e22ae348aeb5660fc2140aec35850c4da997", "ROLE_ADMIN");
 INSERT INTO `schedule` (`name`, `account_id`) VALUES ("New Year", 1);

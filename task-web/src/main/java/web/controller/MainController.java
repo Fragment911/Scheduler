@@ -11,7 +11,6 @@ import services.interfaces.AccountService;
 import web.security.WebSecurityConfig;
 
 import javax.validation.Valid;
-import java.sql.SQLIntegrityConstraintViolationException;
 
 @Controller
 public class MainController {
